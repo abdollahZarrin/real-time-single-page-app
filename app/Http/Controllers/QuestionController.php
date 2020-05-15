@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\QuestionResource;
 use App\Model\Question;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class QuestionController extends Controller
 {
@@ -14,7 +16,7 @@ class QuestionController extends Controller
      */
     public function index()
     {
-        //
+        return QuestionResource::collection(Question::with('reply.like','user') -> latest() -> get());
     }
 
     /**
@@ -35,7 +37,17 @@ class QuestionController extends Controller
      */
     public function store(Request $request)
     {
-        //
+//        $question = new  Question();
+//        $question -> title = $request -> title;
+//        $question -> body = $request -> body;
+//        $question -> slug = Str::slug($request -> title);
+//        $question -> category_id -> $request -> category_id;
+//        $question -> user_id -> $request -> user_id;
+//        $question -> save();
+
+//        auth() -> user() -> question() -> create($request -> all());
+        Question::create($request -> all());
+        return response('created',201);
     }
 
     /**
@@ -46,7 +58,7 @@ class QuestionController extends Controller
      */
     public function show(Question $question)
     {
-        //
+        return new QuestionResource($question);
     }
 
     /**
@@ -80,6 +92,7 @@ class QuestionController extends Controller
      */
     public function destroy(Question $question)
     {
-        //
+        $question -> delete();
+        return response('Deleted',201);
     }
 }
