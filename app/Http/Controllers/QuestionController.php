@@ -6,6 +6,7 @@ use App\Http\Resources\QuestionResource;
 use App\Model\Question;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
+use Symfony\Component\HttpFoundation\Response;
 
 class QuestionController extends Controller
 {
@@ -81,7 +82,12 @@ class QuestionController extends Controller
      */
     public function update(Request $request, Question $question)
     {
-        //
+        $question->update([
+            'title' => $request -> title ? $request -> title : $question -> title,
+            'body' => $request -> body ? $request -> body : $question -> body,
+            'slug' => $request -> slug ? $request -> slug : $question -> slug,
+            ]);
+        return response(['Updated',$request -> all()],202);
     }
 
     /**
