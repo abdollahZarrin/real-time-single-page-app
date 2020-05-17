@@ -11,6 +11,7 @@ const opts = {
         locales: { fa },
         current: 'fa',
     },
+    rtl:true,
     iconfont: 'mdi' // || 'mdiSvg' || 'md' || 'fa' || 'fa4',
 }
 
