@@ -1,8 +1,11 @@
 import Vue from 'vue';
 import vuetify from './plugins/vuetify';
 import router from './Router/router';
+import User from './Helpers/User';
 
 window.Vue = require('vue');
+window.User = User;
+console.log(User.id());
 Vue.use(vuetify);
 require('./bootstrap');
 
