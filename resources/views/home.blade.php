@@ -7,9 +7,12 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Realtime SPA</title>
     <link rel="stylesheet" href="{{asset("css/app.css")}}">
+    <link rel="stylesheet" href="{{asset("css/font.css")}}">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <link href='https://cdn.fontcdn.ir/Font/Persian/Vazir/Vazir.css' rel='stylesheet' type='text/css'>
 </head>
 <body>
-    <div id="app">
+    <div id="app" style="{font-family: myFirstFont}">
         <v-app>
             <app-home></app-home>
         </v-app>

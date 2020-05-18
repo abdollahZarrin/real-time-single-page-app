@@ -1,0 +1,8 @@
+@font-face {
+    font-family: myFirstFont;
+    src: url('../fonts/Vazir.woff');
+    font-weight: 900;
+}
+div {
+    font-family: myFirstFont;
+}

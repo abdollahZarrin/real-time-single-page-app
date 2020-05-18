@@ -5,7 +5,7 @@ import User from './Helpers/User';
 
 window.Vue = require('vue');
 window.User = User;
-console.log(User.id());
+window.EventBus = new Vue();
 Vue.use(vuetify);
 require('./bootstrap');
 

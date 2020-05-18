@@ -4,6 +4,7 @@ class User {
     login(data){
         axios.post('/api/auth/login',data).then(res => {
             this.responseAfterLogin(res);
+            window.location = '/forum';
         }).catch(error =>{
             console.log(error.response.data);
         });
@@ -14,6 +15,7 @@ class User {
         const username = res.data.user;
         if(Token.isValid(access_token)){
             AppStorage.store(username,access_token);
+            window.location = '/forum';
         }
     }
 
@@ -31,6 +33,7 @@ class User {
 
     logout(){
         localStorage.clear();
+        window.location = '/forum';
     }
 
     name(){

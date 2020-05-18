@@ -24,6 +24,8 @@
                     ورود
                 </v-btn>
 
+                <v-btn color="blue" to="/signup">ثبت نام</v-btn>
+
             </v-form>
         </v-container>
     </div>
@@ -38,6 +40,11 @@
                     email:null,
                     password:null
                 }
+            }
+        },
+        created(){
+            if(User.loggedIn()){
+                this.$router.push({name:'forum'});
             }
         },
         methods:{
