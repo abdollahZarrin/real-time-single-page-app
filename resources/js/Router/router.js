@@ -6,6 +6,8 @@ import Login from '../components/Auth/Login';
 import Logout from '../components/Auth/Logout';
 import Signup from '../components/Auth/Signup';
 import Forum from '../components/forum/Forum';
+import Read from '../components/forum/Read';
+import Create from '../components/forum/Create';
 
 
 const routes = [
@@ -13,6 +15,8 @@ const routes = [
     { path: '/logout', component: Logout,name:'logout' },
     { path: '/signup', component: Signup,name:'signup' },
     { path: '/forum', component: Forum,name:'forum' },
+    { path: '/question/:slug', component: Read,name:'read' },
+    { path: '/ask', component: Create,name:'create' },
 ];
 const router = new VueRouter({
     mode: 'history',

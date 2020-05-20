@@ -43,17 +43,9 @@ class QuestionController extends Controller
      */
     public function store(Request $request)
     {
-//        $question = new  Question();
-//        $question -> title = $request -> title;
-//        $question -> body = $request -> body;
-//        $question -> slug = Str::slug($request -> title);
-//        $question -> category_id -> $request -> category_id;
-//        $question -> user_id -> $request -> user_id;
-//        $question -> save();
-
-//        auth() -> user() -> question() -> create($request -> all());
-        Question::create($request -> all());
-        return response('created',201);
+        $request['user_id'] = \auth() -> user() -> id;
+        $question = Question::create($request -> all());
+        return response(new QuestionResource($question),201);
     }
 
     /**
@@ -87,12 +79,8 @@ class QuestionController extends Controller
      */
     public function update(Request $request, Question $question)
     {
-        $question->update([
-            'title' => $request -> title ? $request -> title : $question -> title,
-            'body' => $request -> body ? $request -> body : $question -> body,
-            'slug' => $request -> slug ? $request -> slug : $question -> slug,
-            ]);
-        return response(['Updated',$request -> all()],202);
+        $question -> update($request -> all());
+        return response(['Updated'],202);
     }
 
     /**

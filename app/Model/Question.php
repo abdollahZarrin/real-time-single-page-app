@@ -4,6 +4,8 @@ namespace App\Model;
 
 use App\User;
 use Illuminate\Database\Eloquent\Model;
+use Cviebrock\EloquentSluggable\Sluggable;
+
 
 class Question extends Model
 {
@@ -11,9 +13,18 @@ class Question extends Model
     {
         return 'slug';
     }
+    use Sluggable;
+    public function sluggable()
+    {
+        return [
+            'slug' => [
+                'source' => 'title'
+            ]
+        ];
+    }
 
     protected $table = 'questions';
-    protected $guarded = [];
+    protected $fillable = ['title','slug','body','category_id','user_id','updated_at'];
 
     public function user()
     {
@@ -32,6 +43,6 @@ class Question extends Model
 
     public function getPathAttribute()
     {
-        return asset("api/question/$this->slug");
+        return "/question/$this->slug";
     }
 }

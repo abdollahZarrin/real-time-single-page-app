@@ -1,8 +1,7 @@
 import Vue from 'vue';
 import vuetify from 'vuetify';
 import fa from 'vuetify/src/locale/fa.ts';
-// import '@mdi/font/css/materialdesignicons.css';
-// import 'material-design-icons-iconfont/dist/material-design-icons.css';
+import 'material-design-icons-iconfont/dist/material-design-icons.css'
 
 Vue.use(vuetify);
 

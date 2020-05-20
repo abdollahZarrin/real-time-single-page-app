@@ -3,6 +3,8 @@
 namespace App\Model;
 
 use Illuminate\Database\Eloquent\Model;
+use Cviebrock\EloquentSluggable\Sluggable;
+
 
 class Category extends Model
 {
@@ -12,8 +14,18 @@ class Category extends Model
     {
         return 'slug';
     }
+    use Sluggable;
+    public function sluggable()
+    {
+        return [
+            'slug' => [
+                'source' => 'name'
+            ]
+        ];
+    }
     public function questions()
     {
         return $this -> hasMany(Question::class);
     }
+
 }
