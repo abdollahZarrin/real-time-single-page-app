@@ -9,7 +9,7 @@ use Cviebrock\EloquentSluggable\Sluggable;
 class Category extends Model
 {
     protected $table = 'categories';
-    protected $guarded = [];
+    protected $fillable = ['name','slug'];
     public function getRouteKeyName()
     {
         return 'slug';

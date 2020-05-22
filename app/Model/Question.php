@@ -24,6 +24,7 @@ class Question extends Model
     }
 
     protected $table = 'questions';
+    protected $with = ['reply'];
     protected $fillable = ['title','slug','body','category_id','user_id','updated_at'];
 
     public function user()
@@ -38,7 +39,7 @@ class Question extends Model
 
     public function reply()
     {
-        return $this -> hasMany(Reply::class);
+        return $this -> hasMany(Reply::class)->latest();
     }
 
     public function getPathAttribute()

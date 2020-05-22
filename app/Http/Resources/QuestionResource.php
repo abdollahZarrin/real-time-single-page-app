@@ -22,6 +22,8 @@ class QuestionResource extends JsonResource
             'body' => $this -> body,
             'user' => $this -> user -> name,
             'category' => $this -> category -> name,
+            'replies' => ReplyResource::collection($this -> reply),
+            'replies_count' => $this -> reply -> count(),
             'created_at' => Jalalian::forge($this -> created_at) -> ago(),
             'own' => (auth() -> user()) && ($this -> user -> id === auth()->user() -> id) ? true : false
         ];

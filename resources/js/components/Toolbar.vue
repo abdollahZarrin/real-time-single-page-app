@@ -22,7 +22,7 @@
                 items:[
                     {title:'انجمن',to:'/forum',show: true},
                     {title:'سوال بپرسید',to:'/ask',show: User.loggedIn()},
-                    {title:'دسته بندی',to:'/category',show: User.loggedIn()},
+                    {title:'ایجاد دسته بندی',to:'/category',show: User.admin()},
                     {title:'ورود',to:'/login',show: !User.loggedIn()},
                     {title:'خروج',to:'/logout',show: User.loggedIn()},
                 ]

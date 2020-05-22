@@ -3,6 +3,7 @@
 namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
+use Morilog\Jalali\Jalalian;
 
 class ReplyResource extends JsonResource
 {
@@ -15,9 +16,11 @@ class ReplyResource extends JsonResource
     public function toArray($request)
     {
         return [
+            'id' => $this -> id,
             'body' => $this -> body,
             'user' => $this -> user -> name,
-            'created_at' => $this -> created_at -> diffForHumans()
+            'user_id' => $this -> user_id,
+            'created_at' => Jalalian::forge($this -> created_at) -> ago()
         ];
     }
 }

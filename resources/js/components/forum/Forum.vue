@@ -10,13 +10,16 @@
 
                 </question>
             </v-flex>
-            منوی کنار
+            <v-flex xs4>
+                <app-sidebar></app-sidebar>
+            </v-flex>
         </v-layout>
     </v-container>
 </template>
 
 <script>
     import question from './Question';
+    import appSidebar from './AppSidebar';
     export default {
         name: "Forum",
         data(){
@@ -25,7 +28,8 @@
             }
         },
         components:{
-            question
+            question,
+            appSidebar
         },
         created() {
             axios.get('/api/question').then(res => {

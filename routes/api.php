@@ -7,6 +7,8 @@ Route::apiResource('/question/{question}/reply','ReplyController');
 
 Route::post('like/{reply}','LikeController@like');
 Route::delete('like/{reply}','LikeController@unLike');
+Route::delete('reply/{reply_id}','ReplyController@destroy');
+Route::post('reply/{reply_id}/edit','ReplyController@update');
 Route::group([
 
     'prefix' => 'auth'

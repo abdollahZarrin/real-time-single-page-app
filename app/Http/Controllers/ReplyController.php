@@ -42,8 +42,8 @@ class ReplyController extends Controller
      */
     public function store(Question $question,Request $request)
     {
-        $question -> reply() -> create($request -> all());
-        return response('Created',201);
+        $reply = $question -> reply() -> create($request -> all());
+        return response(['reply' => new ReplyResource($reply)],201);
     }
 
     /**
@@ -75,12 +75,13 @@ class ReplyController extends Controller
      * @param  \App\Model\Reply  $reply
      * @return \Illuminate\Http\Response
      */
-    public function update(Question $question,Request $request, Reply $reply)
+    public function update($id,Request $request)
     {
-        $reply -> update([
+        Reply::where('id',$id) -> update([
             'body' => $request -> body
         ]);
-        return response('Updated',201);
+        $reply = Reply::find($id);
+        return response(['reply'=>$reply],201);
     }
 
     /**
@@ -89,8 +90,9 @@ class ReplyController extends Controller
      * @param  \App\Model\Reply  $reply
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Question $question,Reply $reply)
+    public function destroy($id)
     {
+        $reply = Reply::find($id);
         $reply -> delete();
         return response('Deleted',204);
     }

@@ -23,7 +23,7 @@
 
                 <v-btn
                     color="success"
-                    class="mr-4"
+                    class="mt-2"
                     type="submit"
                 >
                     ایجاد
