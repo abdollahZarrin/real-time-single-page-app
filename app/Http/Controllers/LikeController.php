@@ -16,13 +16,13 @@ class LikeController extends Controller
     public function like(Reply $reply)
     {
         $reply -> like() -> create([
-            'user_id' => 1
+            'user_id' => auth()->id()
         ]);
     }
 
     public function unLike(Reply $reply)
     {
-        $reply -> like() -> where('user_id',1) -> first() -> delete();
+        $reply -> like() -> where('user_id',auth()->id()) -> first() -> delete();
     }
     /**
      * Display a listing of the resource.

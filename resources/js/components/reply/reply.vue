@@ -8,6 +8,8 @@
                 <div class="grey--text">
                     {{reply.created_at}}
                 </div>
+                <v-spacer></v-spacer>
+                <like :content="reply"></like>
             </v-card-title>
                 <v-divider></v-divider>
                 <editing-reply v-if="editing" :reply="reply"></editing-reply>
@@ -26,11 +28,12 @@
 </template>
 
 <script>
-    import editingReply from './editReply'
+    import editingReply from './editReply';
+    import like from '../likes/Like';
     export default {
         name: "reply",
         components:{
-          editingReply
+          editingReply,like
         },
         props:['reply'],
         data(){

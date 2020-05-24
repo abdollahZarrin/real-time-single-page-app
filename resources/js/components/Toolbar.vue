@@ -2,6 +2,7 @@
     <v-toolbar>
         <v-toolbar-title>Realtime SPA</v-toolbar-title>
         <v-spacer></v-spacer>
+        <app-notification v-if="loggedIn"></app-notification>
         <div class="hidden-sm-and-down">
             <router-link
                 v-for="item in items"
@@ -16,7 +17,9 @@
 </template>
 
 <script>
+    import AppNotification from "./AppNotification";
     export default {
+        components: {AppNotification},
         data(){
             return{
                 items:[
@@ -25,7 +28,8 @@
                     {title:'ایجاد دسته بندی',to:'/category',show: User.admin()},
                     {title:'ورود',to:'/login',show: !User.loggedIn()},
                     {title:'خروج',to:'/logout',show: User.loggedIn()},
-                ]
+                ],
+                loggedIn:User.loggedIn()
             }
         },
         created() {
