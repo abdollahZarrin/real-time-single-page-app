@@ -34,6 +34,19 @@
                        }
                    });
                 });
+                Echo.private('App.User.' + User.id())
+                    .notification((notification) => {
+                        this.content.unshift(notification.reply);
+                    });
+                Echo.channel('deleteReplyChannel')
+                    .listen('DeleteReplyEvent', (e) => {
+                        for (let i = 0 ; i < this.content.length ; i++){
+                            if(this.content[i].id === reply_id){
+                                var index = this.content.indexOf(this.content[i]);
+                                this.content.splice(index,1);
+                            }
+                        }
+                    });
             }
         },
         watch: {
