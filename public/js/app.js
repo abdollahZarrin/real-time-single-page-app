@@ -30517,11 +30517,11 @@ var render = function() {
         [
           _c("v-col", { staticClass: "text-center", attrs: { cols: "12" } }, [
             _c("h1", { staticClass: "display-1 font-weight-thin mb-4" }, [
-              _vm._v("Real time SPA")
+              _vm._v("Zarrin Real time SPA")
             ]),
             _vm._v(" "),
             _c("h4", { staticClass: "subheading" }, [
-              _vm._v("Real Time Single Page Application")
+              _vm._v("Zarrin Real Time Single Page Application")
             ])
           ])
         ],
