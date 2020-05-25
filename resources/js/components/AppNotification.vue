@@ -38,7 +38,8 @@
             return{
                 read:{},
                 unread:{},
-                unreadCount:0
+                unreadCount:0,
+                sound:'https://notificationsounds.com/soundfiles/d7a728a67d909e714c0774e22cb806f2/file-sounds-1150-pristine.mp3'
             }
         },
         created() {
@@ -49,6 +50,8 @@
                 .notification((notification) => {
                     this.unread.unshift(notification);
                     this.unreadCount++;
+                    var audio = new Audio(this.sound);
+                    audio.play();
                 });
         },
         methods:{

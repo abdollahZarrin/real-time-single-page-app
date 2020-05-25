@@ -1,7 +1,7 @@
 <template>
     <div class="mt-3">
         <ckeditor :editor="editor"  v-model="body" :config="editorConfig"></ckeditor>
-        <v-btn dark color="green" class="mt-1" @click="reply">پاسخ</v-btn>
+        <v-btn dark color="green" :disabled="!body" class="mt-1" @click="reply">پاسخ</v-btn>
     </div>
 </template>
 

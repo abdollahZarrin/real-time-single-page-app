@@ -2,6 +2,7 @@ import Vue from 'vue';
 import VueRouter from 'vue-router';
 
 Vue.use(VueRouter);
+import Parallax from '../components/Parallax';
 import Login from '../components/Auth/Login';
 import Logout from '../components/Auth/Logout';
 import Signup from '../components/Auth/Signup';
@@ -12,6 +13,7 @@ import CreateCategory from '../components/category/CreateCategory';
 
 
 const routes = [
+    { path: '/', component: Parallax , name:'home' },
     { path: '/login', component: Login,name:'login' },
     { path: '/logout', component: Logout,name:'logout' },
     { path: '/signup', component: Signup,name:'signup' },

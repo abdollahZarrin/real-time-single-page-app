@@ -1,7 +1,7 @@
 <template>
     <div>
         <ckeditor :editor="editor"  v-model="reply.body" :config="editorConfig"></ckeditor>
-        <v-btn dark color="green" class="mt-1" @click="update">بروزرسانی</v-btn>
+        <v-btn dark color="green" class="mt-1" @click="update" :disabled="!reply.body">بروزرسانی</v-btn>
         <v-btn icon class="mt-1" @click="cancel">
             <v-icon color="black">cancel</v-icon>
         </v-btn>
