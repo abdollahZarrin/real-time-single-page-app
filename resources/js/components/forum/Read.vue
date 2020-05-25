@@ -4,7 +4,10 @@
         <v-container>
             <show-question :data="question"></show-question>
             <replies :replies="question.replies"></replies>
-            <new-reply :questionSlug="question.slug"></new-reply>
+            <new-reply v-if="loggedIn" :questionSlug="question.slug"></new-reply>
+            <div v-else class="mt-4">
+                <router-link to="/login">ورود به حساب کاربری جهت دادن پاسخ</router-link>
+            </div>
         </v-container>
     </div>
 </template>
@@ -26,6 +29,11 @@
         created(){
             this.getQuestion();
             this.listen();
+        },
+        computed:{
+          loggedIn(){
+              return User.loggedIn();
+          }
         },
         methods:{
             listen(){

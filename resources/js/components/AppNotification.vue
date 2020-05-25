@@ -58,7 +58,9 @@
                        this.read = res.data.read;
                        this.unread = res.data.unread;
                        this.unreadCount = res.data.unread.length;
-                    });
+                    }).catch(error =>{
+                   Exception.handle(error);
+                });
             },
             readIt(item){
                 axios.post('/api/markAsRead',{id:item.id})

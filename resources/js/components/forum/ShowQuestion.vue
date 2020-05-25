@@ -27,6 +27,22 @@
 <script>
     export default {
         props:['data'],
+        created(){
+          EventBus.$on('newReply',()=>{
+            this.data.replies_count++;
+          });
+          EventBus.$on('deleteReply',()=>{
+              this.data.replies_count--;
+          });
+            Echo.private('App.User.' + User.id())
+                .notification((notification) => {
+                    this.data.replies_count++;
+                });
+            Echo.channel('deleteReplyChannel')
+                .listen('DeleteReplyEvent', (e) => {
+                    this.data.replies_count--;
+                });
+        },
         methods:{
             destroy(){
                 axios.delete('/api/question/'+this.data.slug).then(res =>{
